@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes balades{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="mb-3">
+            <h3> Je suis connecté(e) en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">je me déconnecte</a> <h3>
+        </div>
+    {% endif %} <br><br>
+    
+    <h1>Mes balades</h1> <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>N°</th> #}
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Chien</th>
+                {# <th>Commentaires</th> A REACTIVER APRES QUE J'AI TROUVE COMMENT AFFICHER CHIENS DU JOUR DISPOS !!!!#}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                {# <td>{{ booking.id }}</td> #}
+                <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.title }}</td>
+                {# <td>{{ booking.title }}</td> A REACTIVER APRES QUE J'AI TROUVE COMMENT AFFICHER CHIENS DU JOUR DISPOS !!!!#}
+                <td>
+                    <a class="btn btn-warning" href="{{ path('booking_show', {'id': booking.id}) }}">Détails</a> &nbsp
+                    <a class="btn btn-success" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucune balade trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-lg btn" href="{{ path('booking_new') }}"> Je réserve une nouvelle balade ✅</a> &nbsp
+    <a class="btn btn-outline-info btn-lg" href="{{ path('booking_calendar') }}"> < Retour au calendrier</a>
+{% endblock %}

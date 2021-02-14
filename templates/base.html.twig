@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} Chiens de la casse ! {% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('images/logochiensdelacasse.png') }}" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/"> <img src="{{ asset('images/logochiensdelacasse.png') }}" alt="logo Chiens de la casse !"/></a>
+          
+            <div class="collapse navbar-collapse" id="navbarColor03"></div>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/booking"><img src="https://img.icons8.com/plasticine/100/000000/dog-park.png"/>Mes balades<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="#"><img src="https://img.icons8.com/plasticine/100/000000/dog-footprint.png"/>Mon compte</a>
+                </li>
+                <li class="message active">
+                  <a class="nav-link" target="_BLANK" href="mailto:arry@laspa.fr"> <img src="https://img.icons8.com/color/100/000000/new-message.png"/> J'écris à l'équipe </a>
+                </li>
+                <li class="don">
+                  <a class="nav-link" target="_BLANK" href="https://soutenir.la-spa.fr/b/mon-don?cid=187&_cv=1"> <img src="{{ asset('images/dogbone.png') }}"/>Je fais un don à la SPA</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+ 
+
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        
+        {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Je réserve ma balade{% endblock %} 
+
+{% block body %}
+{% if app.user %}
+        <div class="mb-3">
+            <h3> Je suis connecté(e) en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">je me déconnecte</a> <h3>
+        </div>
+    {% endif %} <br><br>
+    
+    <h1>Je réserve ma balade</h1> <br>
+
+    {{ include('booking/_form.html.twig') }} <br>
+
+    <a class="btn btn-outline-info" href="{{ path('booking_index') }}"> < Retour</a>
+{% endblock %}

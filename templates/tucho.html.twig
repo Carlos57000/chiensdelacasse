@@ -1,0 +1,19 @@
+{% block body %}
+<!DOCTYPE html>
+<html>
+    <head>
+    <base target="_blank"> <!-- pour ouvrir tous les liens dans un nouvel onglet ! -->
+        <meta charset="UTF-8">
+        <title>{% block title %} Voici les chiens du jour ! {% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('images/logochiensdelacasse.png') }}" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        {% block stylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <a class="btn btn-outline-info btn-lg" href="{{ path('booking_index') }}"> < Retour</a>
+   
+        
+    </body>
+</html>
+{% endblock %}

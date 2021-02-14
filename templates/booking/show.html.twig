@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma balade{% endblock %}
+
+{% block body %}
+    <h1>Ma balade</h1> <br> <br>
+
+    <table class="table">
+        <tbody>
+{#             <tr>
+                <th>N°</th>
+                <td>{{ booking.id }}</td>
+            </tr>
+            <tr> #}
+                <th>Début</th>
+                <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fin</th>
+                <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Chien</th> 
+                <td>{{ booking.title }}</td>
+            </tr>
+            {# <tr> A REACTIVER QUAND JE SAURAI COMMENT AFFICHER CHIENS DISPOS !!!!!!
+                <th>Commentaires</th>
+                <td>{{ booking.title }}</td>
+            </tr> #}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a> <br><br>
+
+    {{ include('booking/_delete_form.html.twig') }} <br><br>
+
+    <a class="btn btn-outline-info btn-lg" href="{{ path('booking_index') }}"> < Retour</a>
+
+{% endblock %}

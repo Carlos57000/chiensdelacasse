@@ -1,0 +1,18 @@
+.don
+{
+    background-color: orange;
+    font-weight: bold;
+}
+
+body /*pointeur à tête de chien*/
+{	
+    cursor: url("https://fr.w3docs.com/uploads/media/default/0001/02/53f34c2d574ce31a424df7855ef3e8f2ece589d6.png"), auto;
+}
+
+.block-result-search /*pour afficher chiens du jour à l'horizontale comme sur le site de la SPA*/
+{
+ display: flex;
+ float: left;
+ width: 60em;
+ height: 35em;
+}

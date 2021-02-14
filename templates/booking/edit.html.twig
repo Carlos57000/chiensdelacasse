@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Je modifie ma balade{% endblock %}
+
+{% block body %}
+    <h1>Je modifie ma balade</h1> <br>
+
+    {{ include('booking/_form.html.twig', {'button_label': 'Mettre à jour'}) }} <br>
+
+    {{ include('booking/_delete_form.html.twig') }} <br>
+
+    <a class="btn btn-outline-info btn-lg" href="{{ path('booking_index') }}"> < Retour</a>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if app.user %}
+        <div class="mb-3">
+            <h3> Je suis connecté(e) en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">je me déconnecte</a> <h3>
+        </div>
+    {% endif %} <br><br>
+
+<h1>Mes balades</h1> <br><br>
+<a class="btn btn-primary btn-lg btn-block" href="{{ path('booking_new') }}">Je réserve une nouvelle balade ✅</a> 
+<a class="btn btn-warning btn-lg btn-block" href="{{ path('booking_index') }}">Je visualise mes balades <img src="{{ asset('images/chienloupe.png') }}"/> </a> <br><br>
+
+
+<div id="calendar-holder"></div>
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/list@4.1.0/main.min.css">
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@4.1.0/main.min.js"></script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        var calendarEl = document.getElementById('calendar-holder');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'fr',
+            defaultView: 'dayGridMonth',
+            editable: true,
+        
+            eventSources: [
+                {
+                    url: "{{ path('fc_load_events') }}",
+                    method: "POST",
+                    extraParams: {
+                        filters: JSON.stringify({})
+                    },
+                    failure: () => {
+                        // alert("There was an error while fetching FullCalendar!");
+                    },
+                },
+            ],
+
+            businessHours: {
+            // days of week. an array of zero-based day of week integers (0=Sunday)
+            daysOfWeek: [ 0, 1, 2, 3, 4, 5, 6 ], // Sunday - Saturday
+
+            startTime: '08:00', // a start time (10am in this example)
+            endTime: '21:00', // an end time (6pm in this example)
+            },
+
+            slotDuration: '00:15',
+
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay, listMonth',
+            },
+            plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ], // https://fullcalendar.io/docs/plugin-index
+            timeZone: 'UTC',
+            buttonText: 
+            {
+                today:    'Aujourd\'hui',
+                month:    'Mois',
+                week:     'Semaine',
+                day:      'Jour',
+                list:     'Liste mensuelle',  
+            }
+        });
+        calendar.render();
+    });
+</script>
+{% endblock %}

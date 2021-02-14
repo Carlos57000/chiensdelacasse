@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Je crée mon compte{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Je crée mon compte</h1> <br>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }} <br>
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe' 
+        }) }}<br>
+        
+ <h4>Conditions générales d’utilisation du site « Chiens de la casse ! <br><br>
+ARTICLE 1 : Objet <br><br>
+Les présentes « conditions générales d'utilisation » ont pour objet l'encadrement juridique de l’utilisation du site « Chiens de la casse ! » et de ses services. <br><br>
+Ce contrat est conclu entre : <br>
+Le gérant du site internet, ci-après désigné « l’Éditeur », <br>
+Toute personne physique ou morale souhaitant accéder au site et à ses services, ci-après appelé « l’Utilisateur ». <br><br>
+Les conditions générales d'utilisation doivent être acceptées par tout Utilisateur, et son accès au site vaut acceptation de ces conditions. <br><br><br>
+ARTICLE 2 : Mentions légales <br><br>
+Pour les personnes morales : <br>
+Le site « Chiens de la casse ! » est édité par la société « Code Lanta » EIRL au capital de 1000€, dont le siège social est situé au 34, avenue des Champs-Elysées 75008 Paris. <br>
+La société est représentée par Carlos Alvarez. <br><br>
+Pour les personnes physiques : <br>
+Le site « Chiens de la casse ! » est édité par Carlos Alvarez. <br><br><br>
+ARTICLE 3 : accès aux services <br><br>
+L’Utilisateur du site « Chiens de la casse ! » n’a accès aux services suivants que s’il est membre
+du site (c’est-à-dire qu’il est identifié à l’aide de ses identifiants de connexion) : <br><br>
+• compte <br>
+• balades <br>
+• réservation d’une nouvelle balade <br><br>
+Tout Utilisateur ayant accès à Internet peut accéder gratuitement et depuis n’importe où au site. <br><br>
+Les frais supportés par l’Utilisateur pour y accéder (connexion internet, matériel informatique, etc.)
+ne sont pas à la charge de l’Éditeur. <br><br>
+Le site et ses différents services peuvent être interrompus ou suspendus par l’Éditeur, notamment
+à l’occasion d’une maintenance, sans obligation de préavis ou de justification. <br><br><br>
+ARTICLE 4 : Responsabilité de l’Utilisateur <br><br>
+L'Utilisateur est responsable des risques liés à l’utilisation de son identifiant de connexion et de
+son mot de passe. <br><br>
+Le mot de passe de l’Utilisateur doit rester secret. En cas de divulgation de mot de passe, l’Éditeur
+décline toute responsabilité. <br><br>
+L’Utilisateur assume l’entière responsabilité de l’utilisation qu’il fait des informations et contenus
+présents sur le site « Chiens de la casse ! ». <br><br>
+Tout usage du service par l'Utilisateur ayant directement ou indirectement pour conséquence des
+dommages doit faire l'objet d'une indemnisation au profit du site. <br><br><br>
+ARTICLE 5 : Responsabilité de l’Éditeur <br><br>
+Tout dysfonctionnement du serveur ou du réseau ne peut engager la responsabilité de l’Éditeur. <br><br>
+De même, la responsabilité du site ne peut être engagée en cas de force majeure ou du fait imprévisible et insurmontable d'un tiers. <br><br>
+Le site « Chiens de la casse ! » s'engage à mettre en œuvre tous les moyens nécessaires pour
+garantir la sécurité et la confidentialité des données. Toutefois, il n’apporte pas une garantie de sécurité totale. <br><br>
+L’Éditeur se réserve la faculté d’une non-garantie de la fiabilité des sources, bien que les informations diffusées su le site soient réputées fiables. <br><br><br>
+ARTICLE 6 : Propriété intellectuelle <br><br>
+Les contenus du site « Chiens de la casse ! » (logos, textes, éléments graphiques, vidéos, etc.)
+son protégés par le droit d’auteur, en vertu du Code de la propriété intellectuelle. <br><br>
+L’Utilisateur devra obtenir l’autorisation de l’éditeur du site avant toute reproduction, copie ou publication de ces différents contenus. <br><br>
+Ces derniers peuvent être utilisés par les utilisateurs à des fins privées ; tout usage commercial est
+interdit. <br><br><br>
+ARTICLE 7 : Données personnelles <br><br>
+L’Utilisateur doit obligatoirement fournir des informations personnelles pour procéder à son inscription sur le site. <br><br>
+L’adresse électronique (e-mail) de l’utilisateur pourra notamment être utilisée par le site « Chiens
+de la casse ! » pour la communication d’informations diverses et la gestion du compte. <br><br>
+« Chiens de la casse ! » garantit le respect de la vie privée de l’Utilisateur, conformément à la loi
+n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés. <br><br>
+Le site est déclaré auprès de la CNIL sous le numéro suivant : 456456448797987891.<br><br>
+En vertu des articles 39 et 40 de la loi en date du 6 janvier 1978, l'Utilisateur dispose d'un droit
+d'accès, de rectification, de suppression et d'opposition de ses données personnelles.<br><br>
+L'Utilisateur exerce ce droit via email à l’adresse contact@chiensdelacasse.com. <br><br><br>
+ARTICLE 8 : Liens hypertextes <br><br>
+Les domaines vers lesquels mènent les liens hypertextes présents sur le site n’engagent pas la
+responsabilité de l’Éditeur de « Chiens de la casse ! », qui n’a pas de contrôle sur ces liens. <br><br>
+Il est possible pour un tiers de créer un lien vers une page du site « Chiens de la casse ! » sans
+autorisation expresse de l’éditeur. <br><br><br>
+ARTICLE 9 : Évolution des conditions générales d’utilisation <br><br>
+Le site « Chiens de la casse ! » se réserve le droit de modifier les clauses de ces conditions générales d’utilisation à tout moment et sans justification. <br><br><br>
+ARTICLE 10 : Durée du contrat <br><br>
+La durée du présent contrat est indéterminée. <br><br>
+Le contrat produit ses effets à l'égard de l'Utilisateur à compter du début de l’utilisation du service. <br><br><br>
+ARTICLE 11 : Droit applicable et juridiction compétente <br><br>
+Le présent contrat dépend de la législation française. <br><br>
+En cas de litige non résolu à l’amiable entre l’Utilisateur et l’Éditeur, les tribunaux de Paris sont compétents pour régler le contentieux. </h4> <br><br>
+  
+        {{ form_row(registrationForm.agreeTerms, {
+            label: 'J\'accepte les Conditions Générales d\'Utilisation'
+        }) }} <br>
+
+        <button type="submit" class="btn btn-success  btn-lg">Valider</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
