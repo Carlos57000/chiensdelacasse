@@ -1,4 +1,4 @@
-Prototype fonctionnel (sauf bdd) d'une appli web de réservation au quart d'heure d'un chien venant de la S.P.A au plan d'eau de Metz
+Prototype fonctionnel (sauf bdd) d'une application web de réservation au quart d'heure d'un chien venant de la S.P.A au plan d'eau de Metz
 
 
 
